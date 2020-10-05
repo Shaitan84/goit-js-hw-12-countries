@@ -1,0 +1,20 @@
+{{#each this}}
+<h2 class="searched-country__name">{{name}}</h2>
+<div class="wrapper">
+    <section class="searched-country__info">
+        <p class="searched-country__capital"><span class="text-bold">Capital:</span> {{capital}}</p>
+        <p class="searched-country__population"><span class="text-bold">Population:</span> {{population}}</p>
+        <p class="searched-country__name-list text-bold">Languages:</p>
+        <ul class="searched-country__languages">
+            {{#each languages}}
+            <li class="searched-country__langue">
+                {{name}}
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+    <section class="searched-country__flag">
+        <img src="{{flag}}" alt="{{name}} flag">
+    </section>
+</div>
+{{/each}}

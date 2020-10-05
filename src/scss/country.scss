@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.searched-country {
+  &__name {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 26px;
+    margin-bottom: 50px;
+  }
+
+  &__flag {
+    flex-basis: 400px;
+  }
+
+  &__capital,
+  &__population,
+  &__langue {
+    font-size: 24px;
+  }
+}
+
+.text-bold {
+  font-weight: 700;
+  font-size: 30px;
+}
