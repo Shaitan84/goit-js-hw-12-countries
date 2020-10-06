@@ -31,12 +31,20 @@ function renderResult(countries) {
   if (countries.length > 10) {
     error({
       text: 'To many matches found. Please enter a more specific query!',
+      delay: 1000
     });
     return;
   }
   if (countries.length === 1) {
     clearSearch();
     refs.article.insertAdjacentHTML('beforeend', templateCountry(countries));
+    return;
+  }
+  if (countries.length === 0) {
+    error({
+      text: 'Not found',
+      delay: 1000
+    });
     return;
   }
   clearSearch();

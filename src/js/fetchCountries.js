@@ -1,9 +1,9 @@
-const baseUrl = 'https://restcountries.eu/rest/v2/name/';
+const urlApiCountry = 'https://restcountries.eu/rest/v2/name/';
 
 export default {
-  baseUrl,
+  urlApiCountry,
   searchedCountry: '',
   sendRequest() {
-    return fetch(baseUrl + this.searchedCountry).then(res => res.json());
+    return fetch(urlApiCountry + this.searchedCountry).then(res => res.json());
   },
 };

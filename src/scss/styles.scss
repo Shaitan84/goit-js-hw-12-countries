@@ -1,3 +1,73 @@
-@import './input';
-@import './base';
-@import './country';
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    min-height: 100vh;
+  }
+  
+  img {
+    display: block;
+    width: 100%;
+  }
+  
+  .container {
+      border: 2px solid #000;
+      border-radius: 5%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .input{display: flex;
+        padding-top: 40px;
+    &-title{
+        font-size: 26px;
+        margin: 0 auto;
+    }
+}
+  .search-input {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    height: 40px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .searched-country {
+    &__name {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 26px;
+      margin-bottom: 50px;
+    }
+  
+    &__flag {
+      flex-basis: 400px;
+    }
+  
+    &__capital,
+    &__population,
+    &__langue {
+      font-size: 24px;
+    }
+  }
+  
+  .text-bold {
+    font-weight: 700;
+    font-size: 30px;
+  }
