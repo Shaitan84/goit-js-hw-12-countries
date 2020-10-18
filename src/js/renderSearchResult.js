@@ -43,20 +43,20 @@ function renderResult(countries) {
     success({
       text: 'Your query is successful!',
       hide: true,
-      delay: 3000,
+      delay: 2000,
       width: '280px',
   });
   return;
 }
-  if (countries.length === 0) {
+  if (countries.length !== 1 || countries.length < 10) {
     error({
       text: 'Not found',
       hide: true,
-      delay: 3000,
+      delay: 2000,
       width: '280px',
     });
     return;
   }
-  clearSearch();
+  clearSearch(countries);
   refs.searchHintsUl.insertAdjacentHTML('beforeend', templateItems(countries));
   }
