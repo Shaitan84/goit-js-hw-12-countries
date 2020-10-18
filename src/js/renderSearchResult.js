@@ -2,7 +2,7 @@ import * as _debounce from 'lodash.debounce';
 import countries from './fetchCountries';
 import templateItems from '../tamplates/countries-list.hbs';
 import templateCountry from '../tamplates/country.hbs';
-import { error } from '@pnotify/core/dist/PNotify.js';
+import { error, success, alert} from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -29,24 +29,34 @@ function clearSearch() {
 
 function renderResult(countries) {
   if (countries.length > 10) {
-    error({
+    alert({
       text: 'To many matches found. Please enter a more specific query!',
-      delay: 1000
+      delay: 2000,
+      width: '280px',
     });
     return;
   }
   if (countries.length === 1) {
     clearSearch();
     refs.article.insertAdjacentHTML('beforeend', templateCountry(countries));
-    return;
-  }
+
+    success({
+      text: 'Your query is successful!',
+      hide: true,
+      delay: 3000,
+      width: '280px',
+  });
+  return;
+}
   if (countries.length === 0) {
     error({
       text: 'Not found',
-      delay: 1000
+      hide: true,
+      delay: 3000,
+      width: '280px',
     });
     return;
   }
   clearSearch();
   refs.searchHintsUl.insertAdjacentHTML('beforeend', templateItems(countries));
-}
+  }
