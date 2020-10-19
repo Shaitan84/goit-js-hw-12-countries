@@ -48,14 +48,21 @@ function renderResult(countries) {
   });
   return;
 }
-  if (countries.length !== 1 || countries.length < 10) {
-    error({
-      text: 'Not found',
+  if (countries.length < 10) {
+    alert({
+      text: 'Found several options',
       hide: true,
       delay: 2000,
       width: '280px',
     });
-    return;
+  }
+  else {
+    error({
+      text: 'Ooops, Invalid request entered',
+      hide: true,
+      delay: 2000,
+      width: '280px',
+    });
   }
   clearSearch(countries);
   refs.searchHintsUl.insertAdjacentHTML('beforeend', templateItems(countries));
