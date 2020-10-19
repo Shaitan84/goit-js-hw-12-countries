@@ -13,22 +13,24 @@ const refs = {
 };
 
 const debouncedSearch = _debounce(() => {
-  clearSearch();
+  // clearSearch();
   countries.searchedCountry = refs.input.value;
   countries.sendRequest().then(countries => {
     renderResult(countries);
   });
-}, 500);
+}, 1000);
 
 refs.input.addEventListener('input', debouncedSearch);
 
 function clearSearch() {
+  refs.input.value = '';
   refs.article.innerHTML = '';
   refs.searchHintsUl.innerHTML = '';
 }
 
 function renderResult(countries) {
   if (countries.length > 10) {
+    // clearSearch();
     alert({
       text: 'To many matches found. Please enter a more specific query!',
       delay: 2000,
@@ -36,7 +38,7 @@ function renderResult(countries) {
     });
     return;
   }
-  if (countries.length === 1) {
+  if (countries.length < 2) {
     clearSearch();
     refs.article.insertAdjacentHTML('beforeend', templateCountry(countries));
 
@@ -48,13 +50,27 @@ function renderResult(countries) {
   });
   return;
 }
-  if (countries.length < 10) {
+  if (countries.length >= 2 && countries.length <= 10) {
+      countries.forEach(countries => {
+      refs.article.insertAdjacentHTML('beforeend', templateCountry(countries));
+      // console.log(countries);
+    });
+    refs.article.addEventListener('click', e => {                         
+      const getInputValue = refs.input.value = e.target.textContent;
+      clearSearch();
+
+      article.forEach(countries => {                
+          if(countries === getInputValue) {
+            refs.article.insertAdjacentHTML('beforeend', templateCountry(countries));                    
+          }           
+      });
     alert({
       text: 'Found several options',
       hide: true,
       delay: 2000,
       width: '280px',
     });
+  })
   }
   else {
     error({
@@ -64,6 +80,6 @@ function renderResult(countries) {
       width: '280px',
     });
   }
-  clearSearch(countries);
+  // clearSearch(countries);
   refs.searchHintsUl.insertAdjacentHTML('beforeend', templateItems(countries));
   }
