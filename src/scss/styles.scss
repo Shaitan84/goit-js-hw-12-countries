@@ -69,16 +69,20 @@ body {
   color: #a73939;
   & span {
     font-weight: bold;
+    color: #000;
   }
 }
 
 .country__languages-list {
   font-size: 32px;
   padding-left: 60px;
+  color: #a73939;
 }
 
 .country__img {
   width: 50%;
+  border: 2px solid #6b6868;
+  background-color: #aaa5a5;
 }
 .container {
   border: 2px solid #000;
